@@ -1,0 +1,409 @@
+[
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "ast",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "ast",
+        "description": "ast",
+        "detail": "ast",
+        "documentation": {}
+    },
+    {
+        "label": "csv",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "csv",
+        "description": "csv",
+        "detail": "csv",
+        "documentation": {}
+    },
+    {
+        "label": "glob",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "glob",
+        "description": "glob",
+        "detail": "glob",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "nltk",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "nltk",
+        "description": "nltk",
+        "detail": "nltk",
+        "documentation": {}
+    },
+    {
+        "label": "Tokenizer",
+        "importPath": "keras.preprocessing.text",
+        "description": "keras.preprocessing.text",
+        "isExtraImport": true,
+        "detail": "keras.preprocessing.text",
+        "documentation": {}
+    },
+    {
+        "label": "pad_sequences",
+        "importPath": "keras_preprocessing.sequence",
+        "description": "keras_preprocessing.sequence",
+        "isExtraImport": true,
+        "detail": "keras_preprocessing.sequence",
+        "documentation": {}
+    },
+    {
+        "label": "Sequential",
+        "importPath": "keras.models",
+        "description": "keras.models",
+        "isExtraImport": true,
+        "detail": "keras.models",
+        "documentation": {}
+    },
+    {
+        "label": "load_model",
+        "importPath": "keras.models",
+        "description": "keras.models",
+        "isExtraImport": true,
+        "detail": "keras.models",
+        "documentation": {}
+    },
+    {
+        "label": "Dense",
+        "importPath": "keras.layers",
+        "description": "keras.layers",
+        "isExtraImport": true,
+        "detail": "keras.layers",
+        "documentation": {}
+    },
+    {
+        "label": "Embedding",
+        "importPath": "keras.layers",
+        "description": "keras.layers",
+        "isExtraImport": true,
+        "detail": "keras.layers",
+        "documentation": {}
+    },
+    {
+        "label": "LSTM",
+        "importPath": "keras.layers",
+        "description": "keras.layers",
+        "isExtraImport": true,
+        "detail": "keras.layers",
+        "documentation": {}
+    },
+    {
+        "label": "SpatialDropout1D",
+        "importPath": "keras.layers",
+        "description": "keras.layers",
+        "isExtraImport": true,
+        "detail": "keras.layers",
+        "documentation": {}
+    },
+    {
+        "label": "train_test_split",
+        "importPath": "sklearn.model_selection",
+        "description": "sklearn.model_selection",
+        "isExtraImport": true,
+        "detail": "sklearn.model_selection",
+        "documentation": {}
+    },
+    {
+        "label": "LabelEncoder",
+        "importPath": "sklearn.preprocessing",
+        "description": "sklearn.preprocessing",
+        "isExtraImport": true,
+        "detail": "sklearn.preprocessing",
+        "documentation": {}
+    },
+    {
+        "label": "to_categorical",
+        "importPath": "keras.utils",
+        "description": "keras.utils",
+        "isExtraImport": true,
+        "detail": "keras.utils",
+        "documentation": {}
+    },
+    {
+        "label": "stopwords",
+        "importPath": "nltk.corpus",
+        "description": "nltk.corpus",
+        "isExtraImport": true,
+        "detail": "nltk.corpus",
+        "documentation": {}
+    },
+    {
+        "label": "Rake",
+        "importPath": "rake_nltk",
+        "description": "rake_nltk",
+        "isExtraImport": true,
+        "detail": "rake_nltk",
+        "documentation": {}
+    },
+    {
+        "label": "home",
+        "kind": 2,
+        "importPath": "backend.app",
+        "description": "backend.app",
+        "peekOfCode": "def home():\n    return \"<h1>Welcome to the Sublimpick API</h1><p>Use /search_products or /product_details to interact with the API.</p>\"\n# # Route to search for products by name or URL (Page 1)\n# @app.route('/search_products', methods=['GET'])\n# def search_products():\n#     query = request.args.get('query', '').lower()\n#     # Search products containing the query in their review_url_src\n#     filtered_products = product_data[product_data['review_url_src'].str.contains(query, case=False, na=False)]\n#     # Remove duplicates based on product URL and return product URLs and titles\n#     products = filtered_products[['review_url_src']].drop_duplicates()",
+        "detail": "backend.app",
+        "documentation": {}
+    },
+    {
+        "label": "search_products",
+        "kind": 2,
+        "importPath": "backend.app",
+        "description": "backend.app",
+        "peekOfCode": "def search_products():\n    query = request.args.get('query', '').lower()\n    # Search by product name or part of the name\n    filtered_products = merged_df[merged_df['name'].str.contains(query, case=False, na=False)]\n    # Return product names and URLs\n    product_list = filtered_products[['name', 'url']].drop_duplicates().to_dict(orient='records')\n    return jsonify(product_list)\n# # Route to get product details and reviews (Page 2)\n# @app.route('/product_details', methods=['GET'])\n# def product_details():",
+        "detail": "backend.app",
+        "documentation": {}
+    },
+    {
+        "label": "product_details",
+        "kind": 2,
+        "importPath": "backend.app",
+        "description": "backend.app",
+        "peekOfCode": "def product_details():\n    product_url = request.args.get('product_url', '').lower()\n    # Get product details for the selected product based on the URL\n    product_reviews = reviews_df[reviews_df['review_url_src'].str.lower() == product_url]\n    if product_reviews.empty:\n        return jsonify({\"error\": \"Product not found\"}), 404\n    # Extract details for visualization and reviews\n    details = {\n        \"product_name\": product_reviews['review_title'].values[0],  # Get first review title as product name\n        \"product_link\": product_url,",
+        "detail": "backend.app",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "backend.app",
+        "description": "backend.app",
+        "peekOfCode": "app = Flask(__name__)\n# Step 1: Load file 1 (Python script) and add headers\nfile1_data = [\n    ['https://www.dermstore.com/obagi-medical-c-fx-c-clarifying-serum/11288929.html', 'Obagi Medical Obagi-C Fx System C-Clarifying Serum (1 oz.)', '4.5', '40', '$135.00'],\n    ['https://www.dermstore.com/obagi-medical-hydrate-facial-moisturizer/11291537.html', 'Obagi Medical Hydrate Facial Moisturizer (1.7 oz.)', '4.8', '362', '$58.00'],\n    # Add more rows here as needed\n]\nfile1_columns = ['url', 'name', 'rating_star', 'rating_nb_reviews', 'price']\nproduct_info_df = pd.DataFrame(file1_data, columns=file1_columns)\n# Load the CSV data containing product reviews and details",
+        "detail": "backend.app",
+        "documentation": {}
+    },
+    {
+        "label": "file1_data",
+        "kind": 5,
+        "importPath": "backend.app",
+        "description": "backend.app",
+        "peekOfCode": "file1_data = [\n    ['https://www.dermstore.com/obagi-medical-c-fx-c-clarifying-serum/11288929.html', 'Obagi Medical Obagi-C Fx System C-Clarifying Serum (1 oz.)', '4.5', '40', '$135.00'],\n    ['https://www.dermstore.com/obagi-medical-hydrate-facial-moisturizer/11291537.html', 'Obagi Medical Hydrate Facial Moisturizer (1.7 oz.)', '4.8', '362', '$58.00'],\n    # Add more rows here as needed\n]\nfile1_columns = ['url', 'name', 'rating_star', 'rating_nb_reviews', 'price']\nproduct_info_df = pd.DataFrame(file1_data, columns=file1_columns)\n# Load the CSV data containing product reviews and details\ncsv_file_path = 'output_with_sentiments_keywords.csv'\nif os.path.exists(csv_file_path):",
+        "detail": "backend.app",
+        "documentation": {}
+    },
+    {
+        "label": "file1_columns",
+        "kind": 5,
+        "importPath": "backend.app",
+        "description": "backend.app",
+        "peekOfCode": "file1_columns = ['url', 'name', 'rating_star', 'rating_nb_reviews', 'price']\nproduct_info_df = pd.DataFrame(file1_data, columns=file1_columns)\n# Load the CSV data containing product reviews and details\ncsv_file_path = 'output_with_sentiments_keywords.csv'\nif os.path.exists(csv_file_path):\n    reviews_df = pd.read_csv(csv_file_path, sep=';', quotechar='\"')  # Replace with the correct separator used in your file\n    print(reviews_df.columns)  # Print column names to debug\nelse:\n    raise FileNotFoundError(f\"{csv_file_path} not found. Ensure the file exists.\")\n# Normalize URLs in both dataframes (lowercase and remove trailing slashes)",
+        "detail": "backend.app",
+        "documentation": {}
+    },
+    {
+        "label": "product_info_df",
+        "kind": 5,
+        "importPath": "backend.app",
+        "description": "backend.app",
+        "peekOfCode": "product_info_df = pd.DataFrame(file1_data, columns=file1_columns)\n# Load the CSV data containing product reviews and details\ncsv_file_path = 'output_with_sentiments_keywords.csv'\nif os.path.exists(csv_file_path):\n    reviews_df = pd.read_csv(csv_file_path, sep=';', quotechar='\"')  # Replace with the correct separator used in your file\n    print(reviews_df.columns)  # Print column names to debug\nelse:\n    raise FileNotFoundError(f\"{csv_file_path} not found. Ensure the file exists.\")\n# Normalize URLs in both dataframes (lowercase and remove trailing slashes)\nproduct_info_df['url'] = product_info_df['url'].str.lower().str.rstrip('/')",
+        "detail": "backend.app",
+        "documentation": {}
+    },
+    {
+        "label": "csv_file_path",
+        "kind": 5,
+        "importPath": "backend.app",
+        "description": "backend.app",
+        "peekOfCode": "csv_file_path = 'output_with_sentiments_keywords.csv'\nif os.path.exists(csv_file_path):\n    reviews_df = pd.read_csv(csv_file_path, sep=';', quotechar='\"')  # Replace with the correct separator used in your file\n    print(reviews_df.columns)  # Print column names to debug\nelse:\n    raise FileNotFoundError(f\"{csv_file_path} not found. Ensure the file exists.\")\n# Normalize URLs in both dataframes (lowercase and remove trailing slashes)\nproduct_info_df['url'] = product_info_df['url'].str.lower().str.rstrip('/')\nreviews_df['review_url_src'] = reviews_df['review_url_src'].str.lower().str.rstrip('/')\nprint(product_info_df)",
+        "detail": "backend.app",
+        "documentation": {}
+    },
+    {
+        "label": "product_info_df['url']",
+        "kind": 5,
+        "importPath": "backend.app",
+        "description": "backend.app",
+        "peekOfCode": "product_info_df['url'] = product_info_df['url'].str.lower().str.rstrip('/')\nreviews_df['review_url_src'] = reviews_df['review_url_src'].str.lower().str.rstrip('/')\nprint(product_info_df)\nprint(reviews_df)\n# Step 3: Merge both datasets on the common 'url' (from file 1) and 'review_url_src' (from file 2)\nmerged_df = pd.merge(product_info_df, reviews_df, left_on='url', right_on='review_url_src', how='inner')\n# Now we have a combined dataset with product info and detailed reviews\n# Example merged dataset:\n# | url | name | rating_star | rating_nb_reviews | price | review_url_src | review_stars | ... |\nprint(merged_df.head())",
+        "detail": "backend.app",
+        "documentation": {}
+    },
+    {
+        "label": "reviews_df['review_url_src']",
+        "kind": 5,
+        "importPath": "backend.app",
+        "description": "backend.app",
+        "peekOfCode": "reviews_df['review_url_src'] = reviews_df['review_url_src'].str.lower().str.rstrip('/')\nprint(product_info_df)\nprint(reviews_df)\n# Step 3: Merge both datasets on the common 'url' (from file 1) and 'review_url_src' (from file 2)\nmerged_df = pd.merge(product_info_df, reviews_df, left_on='url', right_on='review_url_src', how='inner')\n# Now we have a combined dataset with product info and detailed reviews\n# Example merged dataset:\n# | url | name | rating_star | rating_nb_reviews | price | review_url_src | review_stars | ... |\nprint(merged_df.head())\n# Home route to avoid 404 on the root URL",
+        "detail": "backend.app",
+        "documentation": {}
+    },
+    {
+        "label": "merged_df",
+        "kind": 5,
+        "importPath": "backend.app",
+        "description": "backend.app",
+        "peekOfCode": "merged_df = pd.merge(product_info_df, reviews_df, left_on='url', right_on='review_url_src', how='inner')\n# Now we have a combined dataset with product info and detailed reviews\n# Example merged dataset:\n# | url | name | rating_star | rating_nb_reviews | price | review_url_src | review_stars | ... |\nprint(merged_df.head())\n# Home route to avoid 404 on the root URL\n@app.route('/')\ndef home():\n    return \"<h1>Welcome to the Sublimpick API</h1><p>Use /search_products or /product_details to interact with the API.</p>\"\n# # Route to search for products by name or URL (Page 1)",
+        "detail": "backend.app",
+        "documentation": {}
+    },
+    {
+        "label": "py_file_path",
+        "kind": 5,
+        "importPath": "backend.merging_py_and_csv_in_csv",
+        "description": "backend.merging_py_and_csv_in_csv",
+        "peekOfCode": "py_file_path = 'url_dump_2024_09_23_17_12_10.py'\n# Read the contents of the Python file using UTF-8 encoding\nwith open(py_file_path, 'r', encoding='utf-8') as f:\n    py_content = f.read()\n# Extract the product data from the Python file content\nproduct_data_str = py_content.split(\"CATEGORIES = \")[1]\nproduct_data = ast.literal_eval(product_data_str)  # Safely evaluate the Python list\n# Convert product data to a DataFrame\nproduct_df = pd.DataFrame(product_data, columns=['url', 'name', 'rating_star', 'rating_nb_reviews', 'price'])\n# Step 2: Load review data from the CSV file (output_with_sentiments_keywords.csv)",
+        "detail": "backend.merging_py_and_csv_in_csv",
+        "documentation": {}
+    },
+    {
+        "label": "product_data_str",
+        "kind": 5,
+        "importPath": "backend.merging_py_and_csv_in_csv",
+        "description": "backend.merging_py_and_csv_in_csv",
+        "peekOfCode": "product_data_str = py_content.split(\"CATEGORIES = \")[1]\nproduct_data = ast.literal_eval(product_data_str)  # Safely evaluate the Python list\n# Convert product data to a DataFrame\nproduct_df = pd.DataFrame(product_data, columns=['url', 'name', 'rating_star', 'rating_nb_reviews', 'price'])\n# Step 2: Load review data from the CSV file (output_with_sentiments_keywords.csv)\ncsv_file_path = 'output_with_sentiments_keywords.csv'\nreview_df = pd.read_csv(csv_file_path, sep=';')\n# Step 3: Normalize URLs in both DataFrames (lowercase and remove trailing slashes)\nproduct_df['url'] = product_df['url'].str.lower().str.rstrip('/')\nreview_df['review_url_src'] = review_df['review_url_src'].str.lower().str.rstrip('/')",
+        "detail": "backend.merging_py_and_csv_in_csv",
+        "documentation": {}
+    },
+    {
+        "label": "product_data",
+        "kind": 5,
+        "importPath": "backend.merging_py_and_csv_in_csv",
+        "description": "backend.merging_py_and_csv_in_csv",
+        "peekOfCode": "product_data = ast.literal_eval(product_data_str)  # Safely evaluate the Python list\n# Convert product data to a DataFrame\nproduct_df = pd.DataFrame(product_data, columns=['url', 'name', 'rating_star', 'rating_nb_reviews', 'price'])\n# Step 2: Load review data from the CSV file (output_with_sentiments_keywords.csv)\ncsv_file_path = 'output_with_sentiments_keywords.csv'\nreview_df = pd.read_csv(csv_file_path, sep=';')\n# Step 3: Normalize URLs in both DataFrames (lowercase and remove trailing slashes)\nproduct_df['url'] = product_df['url'].str.lower().str.rstrip('/')\nreview_df['review_url_src'] = review_df['review_url_src'].str.lower().str.rstrip('/')\nprint(review_df['review_url_src'])",
+        "detail": "backend.merging_py_and_csv_in_csv",
+        "documentation": {}
+    },
+    {
+        "label": "product_df",
+        "kind": 5,
+        "importPath": "backend.merging_py_and_csv_in_csv",
+        "description": "backend.merging_py_and_csv_in_csv",
+        "peekOfCode": "product_df = pd.DataFrame(product_data, columns=['url', 'name', 'rating_star', 'rating_nb_reviews', 'price'])\n# Step 2: Load review data from the CSV file (output_with_sentiments_keywords.csv)\ncsv_file_path = 'output_with_sentiments_keywords.csv'\nreview_df = pd.read_csv(csv_file_path, sep=';')\n# Step 3: Normalize URLs in both DataFrames (lowercase and remove trailing slashes)\nproduct_df['url'] = product_df['url'].str.lower().str.rstrip('/')\nreview_df['review_url_src'] = review_df['review_url_src'].str.lower().str.rstrip('/')\nprint(review_df['review_url_src'])\n# Step 4: Create a dictionary to store reviews for each product\nproduct_reviews = {}",
+        "detail": "backend.merging_py_and_csv_in_csv",
+        "documentation": {}
+    },
+    {
+        "label": "csv_file_path",
+        "kind": 5,
+        "importPath": "backend.merging_py_and_csv_in_csv",
+        "description": "backend.merging_py_and_csv_in_csv",
+        "peekOfCode": "csv_file_path = 'output_with_sentiments_keywords.csv'\nreview_df = pd.read_csv(csv_file_path, sep=';')\n# Step 3: Normalize URLs in both DataFrames (lowercase and remove trailing slashes)\nproduct_df['url'] = product_df['url'].str.lower().str.rstrip('/')\nreview_df['review_url_src'] = review_df['review_url_src'].str.lower().str.rstrip('/')\nprint(review_df['review_url_src'])\n# Step 4: Create a dictionary to store reviews for each product\nproduct_reviews = {}\n# Step 5: Iterate over each product in the product_df\nfor index, product_row in product_df.iterrows():",
+        "detail": "backend.merging_py_and_csv_in_csv",
+        "documentation": {}
+    },
+    {
+        "label": "review_df",
+        "kind": 5,
+        "importPath": "backend.merging_py_and_csv_in_csv",
+        "description": "backend.merging_py_and_csv_in_csv",
+        "peekOfCode": "review_df = pd.read_csv(csv_file_path, sep=';')\n# Step 3: Normalize URLs in both DataFrames (lowercase and remove trailing slashes)\nproduct_df['url'] = product_df['url'].str.lower().str.rstrip('/')\nreview_df['review_url_src'] = review_df['review_url_src'].str.lower().str.rstrip('/')\nprint(review_df['review_url_src'])\n# Step 4: Create a dictionary to store reviews for each product\nproduct_reviews = {}\n# Step 5: Iterate over each product in the product_df\nfor index, product_row in product_df.iterrows():\n    product_url = product_row['url']",
+        "detail": "backend.merging_py_and_csv_in_csv",
+        "documentation": {}
+    },
+    {
+        "label": "product_df['url']",
+        "kind": 5,
+        "importPath": "backend.merging_py_and_csv_in_csv",
+        "description": "backend.merging_py_and_csv_in_csv",
+        "peekOfCode": "product_df['url'] = product_df['url'].str.lower().str.rstrip('/')\nreview_df['review_url_src'] = review_df['review_url_src'].str.lower().str.rstrip('/')\nprint(review_df['review_url_src'])\n# Step 4: Create a dictionary to store reviews for each product\nproduct_reviews = {}\n# Step 5: Iterate over each product in the product_df\nfor index, product_row in product_df.iterrows():\n    product_url = product_row['url']\n    product_name = product_row['name']\n    # Create a list to hold all reviews for this product",
+        "detail": "backend.merging_py_and_csv_in_csv",
+        "documentation": {}
+    },
+    {
+        "label": "review_df['review_url_src']",
+        "kind": 5,
+        "importPath": "backend.merging_py_and_csv_in_csv",
+        "description": "backend.merging_py_and_csv_in_csv",
+        "peekOfCode": "review_df['review_url_src'] = review_df['review_url_src'].str.lower().str.rstrip('/')\nprint(review_df['review_url_src'])\n# Step 4: Create a dictionary to store reviews for each product\nproduct_reviews = {}\n# Step 5: Iterate over each product in the product_df\nfor index, product_row in product_df.iterrows():\n    product_url = product_row['url']\n    product_name = product_row['name']\n    # Create a list to hold all reviews for this product\n    product_review_list = []",
+        "detail": "backend.merging_py_and_csv_in_csv",
+        "documentation": {}
+    },
+    {
+        "label": "product_reviews",
+        "kind": 5,
+        "importPath": "backend.merging_py_and_csv_in_csv",
+        "description": "backend.merging_py_and_csv_in_csv",
+        "peekOfCode": "product_reviews = {}\n# Step 5: Iterate over each product in the product_df\nfor index, product_row in product_df.iterrows():\n    product_url = product_row['url']\n    product_name = product_row['name']\n    # Create a list to hold all reviews for this product\n    product_review_list = []\n    # Step 6: Iterate over the review DataFrame to find matching URLs\n    matching_reviews = review_df[review_df['review_url_src'] == product_url]\n    if not matching_reviews.empty:",
+        "detail": "backend.merging_py_and_csv_in_csv",
+        "documentation": {}
+    },
+    {
+        "label": "CATEGORIES",
+        "kind": 5,
+        "importPath": "backend.url_dump_2024_09_23_17_12_10",
+        "description": "backend.url_dump_2024_09_23_17_12_10",
+        "peekOfCode": "CATEGORIES = [ \n['https://www.dermstore.com/obagi-medical-c-fx-c-clarifying-serum/11288929.html', 'Obagi Medical Obagi-C Fx System C-Clarifying Serum (1 oz.)', '4.5', '40', '$135.00'],\n['https://www.dermstore.com/obagi-medical-hydrate-facial-moisturizer/11291537.html', 'Obagi Medical Hydrate Facial Moisturizer (1.7 oz.)', '4.8', '362', '$58.00'],\n['https://www.dermstore.com/obagi-medical-nu-derm-clear-fx/11288915.html', 'Obagi Medical Nu-Derm Clear Fx (2 oz.)', '4.6', '149', '$113.00'],\n['https://www.dermstore.com/skinceuticals-c-e-ferulic-with-15-l-ascorbic-acid-vitamin-c-serum-30ml/11289609.html', 'SkinCeuticals C E Ferulic', '4.7', '5362', '$182.00'],\n['https://www.dermstore.com/skinmedica-tns-advanced-serum-28.4g/12596429.html', 'SkinMedica TNS Advanced+ Serum', '4.3', '473', '$295.00'],\n['https://www.dermstore.com/eltamd-uv-clear-spf46-broad-spectrum-duo/12538013.html', 'EltaMD Exclusive UV Clear SPF 46 Broad-Spectrum Duo', '4.8', '5131', '$73.00'],\n['https://www.dermstore.com/skinceuticals-triple-lipid-restore-2-4-2/11290635.html', 'SkinCeuticals Triple Lipid Restore 242', '4.8', '2061', '$155.00'],\n['https://www.dermstore.com/skinmedica-ha5-hydra-collagen-replenish-and-restore-hydrator-60ml/15449378.html', 'SkinMedica HA5 Hydra Collagen Replenish and Restore Hydrator 60ml', '3.0', '1', '$192.00'],\n['https://www.dermstore.com/neocutis-lumiere-firm-riche-extra-moisturizing-illuminating-and-tightening-eye-cream-15ml/12664555.html', 'Neocutis LUMIÈRE FIRM RICHE Extra Moisturizing Illuminating & Tightening Eye Cream', '4.7', '156', '$125.00'],",
+        "detail": "backend.url_dump_2024_09_23_17_12_10",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "process_datas",
+        "description": "process_datas",
+        "peekOfCode": "def main():\n    # Load the model\n    model = load_model('model/sentiment_analysis_model.h5')\n    new_data = pd.read_csv(\"./exchange/input/input.csv\", sep=\";\")\n    # Train the tokenizer\n    tokenizer = Tokenizer(num_words=5000, split=\" \")\n    tokenizer.fit_on_texts(new_data['review_thoughts'].values)\n    # Tokenizer\n    #tokenizer = Tokenizer(num_words=5000, split=\" \")\n    # Define the predict function",
+        "detail": "process_datas",
+        "documentation": {}
+    },
+    {
+        "label": "REVIEWS",
+        "kind": 5,
+        "importPath": "review_dump_2024_09_24_08_39_53",
+        "description": "review_dump_2024_09_24_08_39_53",
+        "peekOfCode": "REVIEWS = [ \n('https://www.dermstore.com/is-clinical-pro-heal-serum-advance-plus/11291965.html', '2', 'Disappointed', \"First off the quality of the topper is awful and I lost product even though it was securely screwed tight. I didn't perceive any improvements, \\xa0happier with CE ferulic\", 'Mil', '2024-08-16T17:07:32.695Z', 'False', '3', '0', '2024-09-24'),\n('https://www.dermstore.com/is-clinical-pro-heal-serum-advance-plus/11291965.html', '1', 'Dropper leaks everything out.', \"This product cannot be taken anywhere. I have purchased three… THREE…… And it leaks everywhere no matter how tight you make it. It's too expensive to even lose a drop and I think I've gotten nine drops out of three bottles. We go back-and-forth to our lake house. I even keep it in my purse stand up right and my Holland's died. My purse is wet and the bottle still stand up at the top up right this is ridiculous. It's too expensive for you not to be concerned about the Dropper bottle itself. It sucks. If I could write this product -100 I would\", 'Frannie', '2024-07-08T18:26:21.118Z', 'False', '6', '1', '2024-09-24'),\n('https://www.dermstore.com/is-clinical-pro-heal-serum-advance-plus/11291965.html', '5', 'VITAMIN C', \"The only way I get my vitamin C. Love that it's a liquid-like consistency that absorbs right into the skin.\", 'SP', '2024-07-07T22:23:31.341Z', 'False', '1', '0', '2024-09-24'),\n('https://www.dermstore.com/is-clinical-pro-heal-serum-advance-plus/11291965.html', '5', 'good for sensitive skin', 'use as a vit c serum, have sensitive skin and this has worked very well', 'YM', '2024-03-11T01:50:28.792Z', 'False', '5', '0', '2024-09-24'),\n('https://www.dermstore.com/is-clinical-pro-heal-serum-advance-plus/11291965.html', '1', 'Caused perioral dermatitis', \"I'd had issues with other vitamin C serums causing perioral dermatitis in the past, but the medical aesthetician convinced me that this one was 'different' and would 'heal' my skin. It wasn't, and within in a week of using it the stubborn dermatitis that had taken me months to get rid of came back. I should have trusted my gut and will do so next time.\", 'AMH', '2024-02-09T04:35:07.644Z', 'False', '19', '1', '2024-09-24'),\n('https://www.dermstore.com/is-clinical-pro-heal-serum-advance-plus/11291965.html', '1', 'Caused a breakout', \"This serum was recommended by the facialist at my dermatologist's office, but it caused a bad breakout/reaction on my forehead. I patch tested behind my ear without a problem, but after a few days using it on my face, I had a horrible breakout. Disappointed. Maybe I'll try to use it on my arms, but my face didn't like it!\", 'Lablue', '2024-01-26T18:27:13.163Z', 'False', '7', '0', '2024-09-24'),\n('https://www.dermstore.com/is-clinical-pro-heal-serum-advance-plus/11291965.html', '5', 'Great product but I would not buy from this company', \"I really love this product and does help me with stubborn breakouts. Here's where the problem is. This company used a courier to deliver the product, and the product never arrived. I went through 3 weeks of back n forth trying to get them to replace or refund. I sent photos of the delivery person at the wrong place, filled out lost item paper work etc. They kept saying they need to investigate. Never received the item. Had to blow a gasket to get a refund. For that, I am done with dermstore and I've used them for years\", 'customer service is imporrtant', '2024-01-12T20:50:25.763Z', 'False', '46', '2', '2024-09-24'),\n('https://www.dermstore.com/is-clinical-pro-heal-serum-advance-plus/11291965.html', '5', 'Completely changed my skin!', 'I use this serum in conjunction with their active peel pad system. My skin has never looked smoother and, brighter. My hyperpigmentation has decreased since using this product and it leaves me with a beautiful dewy glow.', 'Niecie', '2023-09-13T00:00:00.000Z', 'False', '11', '0', '2024-09-24'),\n('https://www.dermstore.com/is-clinical-pro-heal-serum-advance-plus/11291965.html', '5', 'Love it', 'My skin loves this stuff! Will forever be my skins are staple!', 'Amanda', '2023-08-20T00:00:00.000Z', 'True', '3', '0', '2024-09-24'),",
+        "detail": "review_dump_2024_09_24_08_39_53",
+        "documentation": {}
+    }
+]
