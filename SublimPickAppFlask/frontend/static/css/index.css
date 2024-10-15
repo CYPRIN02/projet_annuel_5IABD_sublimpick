@@ -1,0 +1,71 @@
+/* Style global pour la page */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Le conteneur principal */
+main {
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Titre principal */
+h1 {
+    font-size: 2rem;
+    color: #0070f3;
+    margin-bottom: 15px;
+}
+
+/* Champ de recherche */
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+/* Liste des résultats des produits */
+#productList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Chaque élément de la liste */
+#productList li {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+/* Style des liens */
+#productList li a {
+    text-decoration: none;
+    color: #0070f3;
+    font-size: 1rem;
+}
+
+/* Effet de survol sur les liens */
+#productList li a:hover {
+    color: #005bb5;
+}
+
+/* Assure que la page peut défiler */
+html, body {
+    height: 100%;
+    overflow-y: auto;
+}
