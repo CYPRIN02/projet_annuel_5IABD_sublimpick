@@ -1,16 +1,4 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
-
-
-<main>
-  <h1>Welcome to Sublimpick</h1>
-  <p>Discover the best skincare products through real customer reviews.</p>
-  <a href="/search" class="btn">Start Searching</a>
-</main>
-
-
-<style>
-  main {
+main {
     text-align: center;
     padding: 100px 20px;
   }
@@ -39,4 +27,3 @@
   .btn:hover {
     background-color: #0056b3;
   }
-</style>
