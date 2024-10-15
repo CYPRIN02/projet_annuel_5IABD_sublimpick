@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SublimPick - Search for Products</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <main>
+        <h1>Search for Products</h1>
+        <input type="text" id="searchQuery" placeholder="Type a product name..." oninput="searchProducts()">
+        <ul id="productList"></ul>
+    </main>
+
+    <script>
+        async function searchProducts() {
+            const query = document.getElementById('searchQuery').value;
+            if (query.length > 1) {
+                const response = await fetch(`/search_products?query=${encodeURIComponent(query)}`);
+                const products = await response.json();
+                const productList = document.getElementById('productList');
+                productList.innerHTML = '';  // Clear previous results
+                products.forEach(product => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<a href="/product/${encodeURIComponent(product.product_link)}">${product.product_name}</a>`;
+                    productList.appendChild(li);
+                });
+            }
+        }
+    </script>
+</body>
+</html>
