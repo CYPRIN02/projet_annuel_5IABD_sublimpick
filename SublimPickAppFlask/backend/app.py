@@ -1,28 +1,14 @@
-import io
-import base64
-from io import BytesIO
 from flask import Flask, request, jsonify, render_template
-from matplotlib.figure import Figure
 import pandas as pd
-from collections import Counter
 import json
 import os
 import matplotlib
 matplotlib.use('Agg')
-import matplotlib.pyplot as plt
-import seaborn as sns
 
 from helpers.rating_distrubition_reviews import create_review_graphs
 from helpers.sentiment_analysis_reviews import create_sentiment_graph
 from helpers.trend_reviews_over_time import create_review_trend_graph
 from helpers.keywords_top_reviews import create_keyword_graph
-
-
-import logging
-
-# # Désactiver la journalisation des requêtes HTTP
-# log = logging.getLogger('werkzeug')
-# log.setLevel(logging.ERROR)  # Seuls les messages d'erreur seront affichés
 
 import time
 
@@ -90,7 +76,7 @@ def search_products():
     return jsonify(product_list)
 
 # Route to show product details in a separate page
-@app.route('/product/<path:product_url>')
+@app.route('/product/<path:product_url>', methods=['GET'])
 def product_details(product_url):
     product_url = product_url.strip().lower().rstrip('/')
     product = next((product for product in product_data if product['product_link'].strip().lower().rstrip('/') == product_url), None)
@@ -101,10 +87,19 @@ def product_details(product_url):
     # Timing the graph generation
     start_time = time.time()
     
+    # Get the interval from the request parameters (default to 'Y' for Year)
+    interval = request.args.get('interval', 'Y')
+    
     plot_url = create_review_graphs(product['reviews'])
     plot_url2 = create_sentiment_graph(product['reviews'])
-    plot_url3 = create_review_trend_graph(product['reviews'])
+    plot_url3 = create_review_trend_graph(product['reviews'], interval)
     plot_url4 = create_keyword_graph(product['reviews'])
+    
+    # Check if the request is an AJAX request
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':  # If it's an AJAX request
+        return jsonify({
+            'plot_url3': plot_url3  # Return only the graph that needs to be updated
+        })
 
     # Log time taken to generate graphs
     print(f"Time to generate graphs: {time.time() - start_time:.4f} seconds")

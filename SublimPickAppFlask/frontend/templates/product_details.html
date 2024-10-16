@@ -26,6 +26,16 @@
                 <img src="data:image/png;base64,{{ plot_url2 }}" alt="Sentiment Analysis Graph">
             </div>
         </div>
+
+        <div class="select-option-time">
+            <!-- Dropdown for selecting the interval time figure 3 -->
+            <label for="interval">Select Time Interval:</label>
+            <select id="time-interval">
+                    <option value="Y">Year</option>
+                    <option value="M">Month</option>
+                    <option value="D">Day</option>
+            </select>
+        </div>
         <div class="chart-container">
             <div class="chart">
                 <img src="data:image/png;base64,{{ plot_url3 }}" alt="review trend over time graph">
@@ -78,6 +88,30 @@
     <button class="scroll-to-top" onclick="scrollToTop()">↑</button>
 
     <script>
+        // Function to update the graph when the interval changes
+         // Ensure the DOM is fully loaded before adding event listeners
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // Add event listener to the dropdown
+            document.getElementById('time-interval').addEventListener('change', function() {
+                let selectedInterval = this.value;
+
+                // Get the product link using Jinja variable (make sure Jinja renders it properly)
+                let productLink = "{{ product.product_link }}";  // Jinja will render this server-side
+
+                // Redirect to the same product page with the selected interval
+                window.location.href = `/product/${encodeURIComponent(productLink)}?interval=${selectedInterval}`;
+            });
+
+            // Automatically set the dropdown to the current interval value from the URL
+            const params = new URLSearchParams(window.location.search);
+            const currentInterval = params.get('interval') || 'Y'; // Default to 'Y' if not present
+            document.getElementById('time-interval').value = currentInterval;
+        });
+
+
+
+        // script for table load 30 reviews max 
         let currentReviewIndex = 30;
         const reviews = {{ product.reviews|tojson }};
         
