@@ -39,6 +39,8 @@ def create_sentiment_graph(product_reviews):
 
     img = BytesIO()
     plt.savefig(img, format='png')
+    # After saving
+    plt.close(fig)  # This will close the figure and free memory
     img.seek(0)
     plot_url2 = base64.b64encode(img.getvalue()).decode()
     return plot_url2

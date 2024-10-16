@@ -15,6 +15,8 @@ def create_keyword_graph(product_reviews):
 
         img = BytesIO()
         plt.savefig(img, format='png')
+        # After saving
+        plt.close(fig)  # This will close the figure and free memory
         img.seek(0)
         plot_url4 = base64.b64encode(img.getvalue()).decode()
         return plot_url4

@@ -24,19 +24,52 @@ import logging
 # log = logging.getLogger('werkzeug')
 # log.setLevel(logging.ERROR)  # Seuls les messages d'erreur seront affichés
 
+import time
 
-# Initialize Flask app
-app = Flask(__name__, template_folder='../frontend/templates', static_folder='../frontend/static')
+# Timing the download and loading of the product data
+start_time = time.time()
+# Adjust paths to refer to frontend from the backend directory
+app = Flask(
+    __name__,
+    template_folder=os.path.join(os.getcwd(), '..', 'frontend', 'templates'),
+    static_folder=os.path.join(os.getcwd(), '..', 'frontend', 'static')
+)
+print("Template folder:", app.template_folder)
 
-# Load the JSON data (merged_product_reviews.json)
-json_file_path = 'merged_product_reviews.json'
+from google.cloud import storage
+import tempfile
+
+# Fonction pour télécharger un fichier depuis un bucket Google Cloud Storage
+def download_blob(bucket_name, source_blob_name, destination_file_name):
+    """Télécharge un fichier blob de Cloud Storage vers le système local."""
+    storage_client = storage.Client()
+    bucket = storage_client.bucket(bucket_name)
+    blob = bucket.blob(source_blob_name)
+    blob.download_to_filename(destination_file_name)
+    print(f"Fichier {source_blob_name} téléchargé sur {destination_file_name}.")
+
+# Télécharger les fichiers depuis Cloud Storage
+bucket_name = os.getenv('BUCKET_NAME', 'sublime_bucket_2024')
+storage_path = os.getenv('STORAGE_PATH', 'data-test-api-application')
+
+json_file_name = 'merged_product_reviews.json'
+source_blob_name = f'{storage_path}/{json_file_name}'
+# destination_file_name = f'/tmp/{json_file_name}'
+destination_file_name = os.path.join(tempfile.gettempdir(), json_file_name)
+
+# Télécharger le fichier JSON dans /tmp pour utilisation locale
+download_blob(bucket_name, source_blob_name, destination_file_name)
+
+# Charger les données JSON
+json_file_path = destination_file_name
 if os.path.exists(json_file_path):
     with open(json_file_path, 'r', encoding='utf-8') as f:
         product_data = json.load(f)
 else:
     raise FileNotFoundError(f"{json_file_path} not found. Ensure the file exists.")
 
-
+# Log time taken to load product data
+print(f"Time to load product data: {time.time() - start_time:.4f} seconds")
 
 # Home route (Index page with project introduction)
 @app.route('/')
@@ -65,10 +98,16 @@ def product_details(product_url):
     if product is None:
         return render_template('404.html'), 404
     
+    # Timing the graph generation
+    start_time = time.time()
+    
     plot_url = create_review_graphs(product['reviews'])
     plot_url2 = create_sentiment_graph(product['reviews'])
     plot_url3 = create_review_trend_graph(product['reviews'])
     plot_url4 = create_keyword_graph(product['reviews'])
+
+    # Log time taken to generate graphs
+    print(f"Time to generate graphs: {time.time() - start_time:.4f} seconds")
 
     return render_template('product_details.html', product=product, plot_url=plot_url, plot_url2=plot_url2, plot_url3=plot_url3, plot_url4=plot_url4)
 

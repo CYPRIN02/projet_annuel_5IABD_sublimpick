@@ -1,0 +1,18 @@
+runtime: python311  # Utilisez la version de Python que vous avez installée
+
+# Commande de démarrage pour Google App Engine
+entrypoint: gunicorn -b :$PORT main:app  # Entry point de l'application (main.py)
+
+# accès aux APIs et services nécessaires
+env_variables:
+  GOOGLE_CLOUD_PROJECT: "sublimepick1"  # ID  projet
+  BUCKET_NAME: "sublime_bucket_2024"    # Nom  Cloud Storage bucket
+  STORAGE_PATH: "data-test-api-application"  # Répertoire dans bucket
+
+
+handlers:
+  - url: /static
+    static_dir: frontend/static
+
+  - url: /.*
+    script: auto
