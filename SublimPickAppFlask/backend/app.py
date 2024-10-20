@@ -2,6 +2,10 @@ from flask import Flask, request, jsonify, render_template
 import pandas as pd
 import json
 import os
+import sys
+
+sys.path.append(os.path.join(os.path.dirname(__file__), 'helpers'))
+
 import matplotlib
 matplotlib.use('Agg')
 
@@ -35,8 +39,12 @@ def download_blob(bucket_name, source_blob_name, destination_file_name):
     print(f"Fichier {source_blob_name} téléchargé sur {destination_file_name}.")
 
 # Télécharger les fichiers depuis Cloud Storage
-bucket_name = os.getenv('BUCKET_NAME', 'sublime_bucket_2024')
-storage_path = os.getenv('STORAGE_PATH', 'data-test-api-application')
+# bucket_name = os.getenv('BUCKET_NAME', 'sublime_bucket_2024')
+# storage_path = os.getenv('STORAGE_PATH', 'data-test-api-application')
+bucket_name = os.getenv('BUCKET_NAME', 'sublime_bucket_bis')
+storage_path = os.getenv('STORAGE_PATH', '10/reviews')
+
+
 
 json_file_name = 'merged_product_reviews.json'
 source_blob_name = f'{storage_path}/{json_file_name}'

@@ -87,39 +87,3 @@ with open(output_file_path, 'w', encoding='utf-8') as f:
     json.dump(merged_output, f, ensure_ascii=False, indent=4)
 
 print(f"Merged product and review data saved to {output_file_path}")
-
-
-# import pandas as pd
-# import ast
-
-# # Step 1: Load and parse the Python file as a string (reading it like a CSV)
-# py_file_path = 'url_dump_2024_09_23_17_12_10.py'  # Replace with actual file path
-
-# # Read the contents of the Python file
-# with open(py_file_path, 'r', encoding='utf-8') as f:
-#     py_content = f.read()
-
-# # Step 2: Extract the product data from the Python file content
-# # Look for the list inside the Python file by locating 'CATEGORIES' and parsing the list
-# product_data_str = py_content.split("CATEGORIES = ")[1]  # Isolate the list of products
-# product_data = ast.literal_eval(product_data_str)  # Safely evaluate the Python list
-
-# # Convert the product data into a DataFrame
-# product_df = pd.DataFrame(product_data, columns=['url', 'name', 'rating_star', 'rating_nb_reviews', 'price'])
-
-# # Step 3: Load review data from the CSV file
-# csv_file_path = 'output_with_sentiments_keywords.csv'  # Replace with actual file path
-# review_df = pd.read_csv(csv_file_path, sep=';')
-
-# # Step 4: Normalize URLs in both DataFrames (lowercase and remove trailing slashes)
-# product_df['url'] = product_df['url'].str.lower().str.rstrip('/')
-# review_df['review_url_src'] = review_df['review_url_src'].str.lower().str.rstrip('/')
-
-# # Step 5: Merge the two DataFrames on the 'url' and 'review_url_src' columns
-# merged_df = pd.merge(product_df, review_df, left_on='url', right_on='review_url_src', how='left')
-
-# # Step 6: Save the merged DataFrame to a CSV file
-# output_file_path = 'merged_output.csv'  # Replace with actual output path
-# merged_df.to_csv(output_file_path, index=False)
-
-# print("Merged file saved successfully.")
