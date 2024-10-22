@@ -8,174 +8,185 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/product_details.css') }}">
     
 </head>
-<body>
-    <main>
-        <h1>{{ product.product_name }}</h1>
-        <p><strong>Price:</strong> {{ product.price }}</p>
-        <p><strong>Rating:</strong> {{ product.rating_star }} stars ({{ product.rating_nb_reviews }} reviews)</p>
-        <p><strong>Link product original source :</strong> 
-            <a href="{{ product.product_link }}" target="_blank">{{ product.product_link }}</a>
-        </p>
+<div>
+    <body>
+        <header>
+            <nav>
+                <a href="/" title="Sublimpick - Your Sublime Product Pick">
+                    <img src="{{ url_for('static', filename='images/sublimpick-logo.JPG') }}" alt="Sublimpick Logo" title="Sublimpick: The best picks for sublime skincare">
+                </a>
+                <a href="/">Home</a> | 
+                <a href="/search">Search</a>
+            </nav>
+        </header>
+        <main>
+            <h1>{{ product.product_name }}</h1>
+            <p><strong>Price:</strong> {{ product.price }}</p>
+            <p><strong>Rating:</strong> {{ product.rating_star }} stars ({{ product.rating_nb_reviews }} reviews)</p>
+            <p><strong>Link product original source :</strong> 
+                <a href="{{ product.product_link }}" target="_blank">{{ product.product_link }}</a>
+            </p>
 
-        <h2>Customer Reviews Analysis</h2>
-        <div class="chart-container">
-            <div class="chart">
-                <img src="data:image/png;base64,{{ plot_url }}" alt="Review Ratings Distribution">
+            <h2>Customer Reviews Analysis</h2>
+            <div class="chart-container">
+                <div class="chart">
+                    <img src="data:image/png;base64,{{ plot_url }}" alt="Review Ratings Distribution">
+                </div>
+                <div class="chart">
+                    <img src="data:image/png;base64,{{ plot_url2 }}" alt="Sentiment Analysis Graph">
+                </div>
             </div>
-            <div class="chart">
-                <img src="data:image/png;base64,{{ plot_url2 }}" alt="Sentiment Analysis Graph">
-            </div>
-        </div>
 
-        <div class="select-option-time">
-            <!-- Dropdown for selecting the interval time figure 3 -->
-            <label for="interval">Select Time Interval:</label>
-            <select id="time-interval">
-                    <option value="Y">Year</option>
-                    <option value="M">Month</option>
-                    <option value="D">Day</option>
+            <div class="select-option-time">
+                <!-- Dropdown for selecting the interval time figure 3 -->
+                <label for="interval">Select Time Interval:</label>
+                <select id="time-interval">
+                        <option value="Y">Year</option>
+                        <option value="M">Month</option>
+                        <option value="D">Day</option>
+                </select>
+            </div>
+            <div class="chart-container">
+                <div class="chart">
+                    <img src="data:image/png;base64,{{ plot_url3 }}" alt="review trend over time graph">
+                </div>
+                <div class="chart">
+                    <img src="data:image/png;base64,{{ plot_url4 }}" alt="a word cloud-like chart for keywords">
+                </div>
+            </div>
+
+            <h2>Customer Reviews</h2>
+
+            <label for="sort">Sort reviews by:</label>
+            <select id="sort" class="sort-select" onchange="sortReviews()">
+                <option value="date">Date</option>
+                <option value="stars">Stars</option>
+                <option value="author">Author</option>
             </select>
-        </div>
-        <div class="chart-container">
-            <div class="chart">
-                <img src="data:image/png;base64,{{ plot_url3 }}" alt="review trend over time graph">
-            </div>
-            <div class="chart">
-                <img src="data:image/png;base64,{{ plot_url4 }}" alt="a word cloud-like chart for keywords">
-            </div>
-        </div>
 
-        <h2>Customer Reviews</h2>
+            <table id="review-table">
+                <thead>
+                    <tr>
+                        <th>Review Date</th>
+                        <th>Author</th>
+                        <th>Review Title</th>
+                        <th>Thoughts</th>
+                        <th>Stars</th>
+                        <th>Sentiment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for review in product.reviews[:30] %}
+                    <tr>
+                        <td>{{ review.review_date }}</td>
+                        <td>{{ review.review_author }}</td>
+                        <td>{{ review.review_title }}</td>
+                        <td>{{ review.review_thoughts }}</td>
+                        <td>{{ review.review_stars }}</td>
+                        <td>{{ review.sentiment_category }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
 
-        <label for="sort">Sort reviews by:</label>
-        <select id="sort" class="sort-select" onchange="sortReviews()">
-            <option value="date">Date</option>
-            <option value="stars">Stars</option>
-            <option value="author">Author</option>
-        </select>
+            {% if product.reviews|length > 30 %}
+            <button class="load-more" onclick="loadMoreReviews()">Load more reviews</button>
+            {% endif %}
+        </main>
 
-        <table id="review-table">
-            <thead>
-                <tr>
-                    <th>Review Date</th>
-                    <th>Author</th>
-                    <th>Review Title</th>
-                    <th>Thoughts</th>
-                    <th>Stars</th>
-                    <th>Sentiment</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for review in product.reviews[:30] %}
-                <tr>
-                    <td>{{ review.review_date }}</td>
-                    <td>{{ review.review_author }}</td>
-                    <td>{{ review.review_title }}</td>
-                    <td>{{ review.review_thoughts }}</td>
-                    <td>{{ review.review_stars }}</td>
-                    <td>{{ review.sentiment_category }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <!-- Scroll to top button -->
+        <button class="scroll-to-top" onclick="scrollToTop()">↑</button>
 
-        {% if product.reviews|length > 30 %}
-        <button class="load-more" onclick="loadMoreReviews()">Load more reviews</button>
-        {% endif %}
-    </main>
+        <script>
+            // Function to update the graph when the interval changes
+            // Ensure the DOM is fully loaded before adding event listeners
+            document.addEventListener('DOMContentLoaded', function () {
 
-    <!-- Scroll to top button -->
-    <button class="scroll-to-top" onclick="scrollToTop()">↑</button>
+                // Add event listener to the dropdown
+                document.getElementById('time-interval').addEventListener('change', function() {
+                    let selectedInterval = this.value;
 
-    <script>
-        // Function to update the graph when the interval changes
-         // Ensure the DOM is fully loaded before adding event listeners
-        document.addEventListener('DOMContentLoaded', function () {
+                    // Get the product link using Jinja variable (make sure Jinja renders it properly)
+                    let productLink = "{{ product.product_link }}";  // Jinja will render this server-side
 
-            // Add event listener to the dropdown
-            document.getElementById('time-interval').addEventListener('change', function() {
-                let selectedInterval = this.value;
+                    // Redirect to the same product page with the selected interval
+                    window.location.href = `/product/${encodeURIComponent(productLink)}?interval=${selectedInterval}`;
+                });
 
-                // Get the product link using Jinja variable (make sure Jinja renders it properly)
-                let productLink = "{{ product.product_link }}";  // Jinja will render this server-side
-
-                // Redirect to the same product page with the selected interval
-                window.location.href = `/product/${encodeURIComponent(productLink)}?interval=${selectedInterval}`;
+                // Automatically set the dropdown to the current interval value from the URL
+                const params = new URLSearchParams(window.location.search);
+                const currentInterval = params.get('interval') || 'Y'; // Default to 'Y' if not present
+                document.getElementById('time-interval').value = currentInterval;
             });
 
-            // Automatically set the dropdown to the current interval value from the URL
-            const params = new URLSearchParams(window.location.search);
-            const currentInterval = params.get('interval') || 'Y'; // Default to 'Y' if not present
-            document.getElementById('time-interval').value = currentInterval;
-        });
 
 
+            // script for table load 30 reviews max 
+            let currentReviewIndex = 30;
+            const reviews = {{ product.reviews|tojson }};
+            
+            function loadMoreReviews() {
+                const tableBody = document.getElementById('review-table').getElementsByTagName('tbody')[0];
+                for (let i = currentReviewIndex; i < currentReviewIndex + 30 && i < reviews.length; i++) {
+                    const row = tableBody.insertRow();
+                    row.innerHTML = `
+                        <td>${reviews[i].review_date}</td>
+                        <td>${reviews[i].review_author}</td>
+                        <td>${reviews[i].review_title}</td>
+                        <td>${reviews[i].review_thoughts}</td>
+                        <td>${reviews[i].review_stars}</td>
+                        <td>${reviews[i].sentiment_category}</td>
+                    `;
+                }
+                currentReviewIndex += 30;
 
-        // script for table load 30 reviews max 
-        let currentReviewIndex = 30;
-        const reviews = {{ product.reviews|tojson }};
-        
-        function loadMoreReviews() {
-            const tableBody = document.getElementById('review-table').getElementsByTagName('tbody')[0];
-            for (let i = currentReviewIndex; i < currentReviewIndex + 30 && i < reviews.length; i++) {
-                const row = tableBody.insertRow();
-                row.innerHTML = `
-                    <td>${reviews[i].review_date}</td>
-                    <td>${reviews[i].review_author}</td>
-                    <td>${reviews[i].review_title}</td>
-                    <td>${reviews[i].review_thoughts}</td>
-                    <td>${reviews[i].review_stars}</td>
-                    <td>${reviews[i].sentiment_category}</td>
-                `;
-            }
-            currentReviewIndex += 30;
-
-            // Hide the load more button if all reviews are loaded
-            if (currentReviewIndex >= reviews.length) {
-                document.querySelector('.load-more').style.display = 'none';
-            }
-        }
-
-
-        function sortReviews() {
-            const sortBy = document.getElementById('sort').value;
-            let sortedReviews = [];
-
-            if (sortBy === 'date') {
-                sortedReviews = reviews.sort((a, b) => new Date(b.review_date) - new Date(a.review_date));
-            } else if (sortBy === 'stars') {
-                sortedReviews = reviews.sort((a, b) => b.review_stars - a.review_stars);
-            } else if (sortBy === 'author') {
-                sortedReviews = reviews.sort((a, b) => a.review_author.localeCompare(b.review_author));
+                // Hide the load more button if all reviews are loaded
+                if (currentReviewIndex >= reviews.length) {
+                    document.querySelector('.load-more').style.display = 'none';
+                }
             }
 
-            const tableBody = document.getElementById('review-table').getElementsByTagName('tbody')[0];
-            tableBody.innerHTML = '';
 
-            for (let i = 0; i < Math.min(30, sortedReviews.length); i++) {
-                const row = tableBody.insertRow();
-                row.innerHTML = `
-                    <td>${sortedReviews[i].review_date}</td>
-                    <td>${sortedReviews[i].review_author}</td>
-                    <td>${sortedReviews[i].review_title}</td>
-                    <td>${sortedReviews[i].review_thoughts}</td>
-                    <td>${sortedReviews[i].review_stars}</td>
-                    <td>${sortedReviews[i].sentiment_category}</td>
-                `;
+            function sortReviews() {
+                const sortBy = document.getElementById('sort').value;
+                let sortedReviews = [];
+
+                if (sortBy === 'date') {
+                    sortedReviews = reviews.sort((a, b) => new Date(b.review_date) - new Date(a.review_date));
+                } else if (sortBy === 'stars') {
+                    sortedReviews = reviews.sort((a, b) => b.review_stars - a.review_stars);
+                } else if (sortBy === 'author') {
+                    sortedReviews = reviews.sort((a, b) => a.review_author.localeCompare(b.review_author));
+                }
+
+                const tableBody = document.getElementById('review-table').getElementsByTagName('tbody')[0];
+                tableBody.innerHTML = '';
+
+                for (let i = 0; i < Math.min(30, sortedReviews.length); i++) {
+                    const row = tableBody.insertRow();
+                    row.innerHTML = `
+                        <td>${sortedReviews[i].review_date}</td>
+                        <td>${sortedReviews[i].review_author}</td>
+                        <td>${sortedReviews[i].review_title}</td>
+                        <td>${sortedReviews[i].review_thoughts}</td>
+                        <td>${sortedReviews[i].review_stars}</td>
+                        <td>${sortedReviews[i].sentiment_category}</td>
+                    `;
+                }
+                currentReviewIndex = 30;
+
+                if (currentReviewIndex >= sortedReviews.length) {
+                    document.querySelector('.load-more').style.display = 'none';
+                } else {
+                    document.querySelector('.load-more').style.display = 'block';
+                }
             }
-            currentReviewIndex = 30;
 
-            if (currentReviewIndex >= sortedReviews.length) {
-                document.querySelector('.load-more').style.display = 'none';
-            } else {
-                document.querySelector('.load-more').style.display = 'block';
+
+            function scrollToTop() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
-        }
-
-
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    </script>
-</body>
+        </script>
+    </body>
+</div>
 </html>

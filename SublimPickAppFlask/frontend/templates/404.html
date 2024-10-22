@@ -6,9 +6,20 @@
     <title>Page Not Found</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
-<body>
-    <h1>404 - Page Not Found</h1>
-    <p>Sorry, the product you're looking for doesn't exist.</p>
-    <a href="/">Go back to home</a>
-</body>
+<div>
+    <body>
+        <header>
+            <nav>
+                <a href="/" title="Sublimpick - Your Sublime Product Pick">
+                    <img src="{{ url_for('static', filename='images/sublimpick-logo.JPG') }}" alt="Sublimpick Logo" title="Sublimpick: The best picks for sublime skincare">
+                </a>
+                <a href="/">Home</a> | 
+                <a href="/search">Search</a>
+            </nav>
+        </header>
+        <h1>404 - Page Not Found</h1>
+        <p>Sorry, the product you're looking for doesn't exist.</p>
+        <a href="/">Go back to home</a>
+    </body>
+</div>
 </html>

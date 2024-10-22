@@ -8,11 +8,23 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
 
 </head>
-<body>
-    <main>
-        <h1>Welcome to Sublimpick</h1>
-        <p>Discover the best skincare products through real customer reviews and intelligent analysis. Our platform helps you make informed decisions by analyzing customer feedback and providing insightful reporting.</p>
-        <a href="/search" class="btn">Start Searching</a>
-    </main>
-</body>
+<div>
+    <body>
+        
+        <header>
+            <nav>
+                <a href="/" title="Sublimpick - Your Sublime Product Pick">
+                    <img src="{{ url_for('static', filename='images/sublimpick-logo.JPG') }}" alt="Sublimpick Logo" title="Sublimpick: The best picks for sublime skincare">
+                </a>
+                <a href="/">Home</a> | 
+                <a href="/search">Search</a>
+            </nav>
+        </header>
+        <main>
+            <h1>Welcome to Sublimpick</h1>
+            <p>Discover the best skincare products through real customer reviews and intelligent analysis. Our platform helps you make informed decisions by analyzing customer feedback and providing insightful reporting.</p>
+            <a href="/search" class="btn">Start Searching</a>
+        </main>
+    </body>
+</div>
 </html>

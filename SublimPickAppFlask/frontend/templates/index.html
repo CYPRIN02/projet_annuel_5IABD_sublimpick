@@ -7,28 +7,38 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 </head>
-<body>
-    <main>
-        <h1>Search for Products</h1>
-        <input type="text" id="searchQuery" placeholder="Type a product name..." oninput="searchProducts()">
-        <ul id="productList"></ul>
-    </main>
+<div>
+    <body>
+        <header>
+            <nav>
+                <a href="/" title="Sublimpick - Your Sublime Product Pick">
+                    <img src="{{ url_for('static', filename='images/sublimpick-logo.JPG') }}" alt="Sublimpick Logo" title="Sublimpick: The best picks for sublime skincare">
+                </a>
+                <a href="/">Home</a>
+            </nav>
+        </header>
+        <main>
+            <h1>Search for Products</h1>
+            <input type="text" id="searchQuery" placeholder="Type a product name..." oninput="searchProducts()">
+            <ul id="productList"></ul>
+        </main>
 
-    <script>
-        async function searchProducts() {
-            const query = document.getElementById('searchQuery').value;
-            if (query.length > 1) {
-                const response = await fetch(`/search_products?query=${encodeURIComponent(query)}`);
-                const products = await response.json();
-                const productList = document.getElementById('productList');
-                productList.innerHTML = '';  // Clear previous results
-                products.forEach(product => {
-                    const li = document.createElement('li');
-                    li.innerHTML = `<a href="/product/${encodeURIComponent(product.product_link)}">${product.product_name}</a>`;
-                    productList.appendChild(li);
-                });
+        <script>
+            async function searchProducts() {
+                const query = document.getElementById('searchQuery').value;
+                if (query.length > 1) {
+                    const response = await fetch(`/search_products?query=${encodeURIComponent(query)}`);
+                    const products = await response.json();
+                    const productList = document.getElementById('productList');
+                    productList.innerHTML = '';  // Clear previous results
+                    products.forEach(product => {
+                        const li = document.createElement('li');
+                        li.innerHTML = `<a href="/product/${encodeURIComponent(product.product_link)}">${product.product_name}</a>`;
+                        productList.appendChild(li);
+                    });
+                }
             }
-        }
-    </script>
-</body>
+        </script>
+    </body>
+</div>
 </html>
