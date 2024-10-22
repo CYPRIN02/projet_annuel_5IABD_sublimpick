@@ -50,9 +50,9 @@ nav {
 
 /* Style for the logo image */
 nav img {
-    height: 50px; /* Adjust the logo size */
+    height: 120px; /* Adjust the logo size */
     width: auto; /* Ensure the aspect ratio is maintained */
-    margin-right: 20px; /* Add some space between the logo and links */
+    margin-right: 5px; /* Add some space between the logo and links */
 }
 
 /* Style for anchor tags inside the navigation */
@@ -60,7 +60,7 @@ nav a {
     color: white; /* Link text color */
     text-decoration: none; /* Remove underline */
     padding: 10px 15px; /* Add padding for clickable area */
-    font-size: 16px; /* Font size */
+    font-size: 30px; /* Font size */
     font-weight: bold; /* Make the text bold */
     transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effect */
     border-radius: 5px; /* Rounded corners for links */
@@ -96,6 +96,6 @@ nav a:visited {
     }
 
     nav img {
-        margin-bottom: 10px; /* Add space below the logo on small screens */
+        margin-bottom: 2px; /* Add space below the logo on small screens */
     }
 }

@@ -25,6 +25,7 @@ app = Flask(
     static_folder=os.path.join(os.getcwd(), '..', 'frontend', 'static')
 )
 print("Template folder:", app.template_folder)
+app.config['TEMPLATES_AUTO_RELOAD'] = True  # Reload templates without caching
 
 from google.cloud import storage
 import tempfile
