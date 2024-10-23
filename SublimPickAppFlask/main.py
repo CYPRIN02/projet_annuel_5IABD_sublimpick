@@ -15,9 +15,15 @@ sys.path.append(frontend_path)
 try:
     from backend.app import app  # Importer l'application Flask
     print("Importation de 'backend.app' réussie")
+    from backend.helpers.rating_distrubition_reviews import create_review_graphs
+    from backend.helpers.sentiment_analysis_reviews import create_sentiment_graph
+    from backend.helpers.trend_reviews_over_time import create_review_trend_graph
+    from backend.helpers.keywords_top_reviews import create_keyword_graph
+    print("Importation de 'helpers' réussie")
 except ImportError as e:
     print(f"Erreur d'importation dans 'backend.app': {e}")
 
 if __name__ == "__main__":
-    print("Lancement de l'application Flask")
-    app.run(host="0.0.0.0", port=8080, debug=False)
+    port = int(os.environ.get("PORT", 8080))
+    print(f"Lancement de l'application Flask sur le port {port}")
+    app.run(host="0.0.0.0", port=port, debug=False)

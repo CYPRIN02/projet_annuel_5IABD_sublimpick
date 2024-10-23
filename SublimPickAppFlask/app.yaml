@@ -1,7 +1,7 @@
 runtime: python311  # Utilisez la version de Python que vous avez installée
 
 # Commande de démarrage pour Google App Engine
-entrypoint: gunicorn -b :$PORT main:app  # Entry point de l'application (main.py)
+entrypoint: gunicorn -b :$PORT -w 1 main:app  # Entry point de l'application (main.py)
 
 # accès aux APIs et services nécessaires
 env_variables:
@@ -10,8 +10,9 @@ env_variables:
   # STORAGE_PATH: "data-test-api-application"  # Répertoire dans bucket
   BUCKET_NAME: "sublime_bucket_bis"
   STORAGE_PATH: "10/reviews"
-  PYTHONPATH: backend:backend/helpers
+  PYTHONPATH: .:backend:backend/helpers
 
+service_account: sublimepick1@appspot.gserviceaccount.com
 
 handlers:
   - url: /static
@@ -19,6 +20,9 @@ handlers:
 
   - url: /.*
     script: auto
+
+readiness_check:
+  app_start_timeout_sec: 1800
 
 # automatic_scaling:
 #   min_idle_instances: 1

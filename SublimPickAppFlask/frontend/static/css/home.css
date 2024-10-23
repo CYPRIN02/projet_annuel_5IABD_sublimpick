@@ -18,7 +18,7 @@ main {
 
 h1 {
     font-size: 3rem;
-    color: #0070f3;
+    color: h#91c0ba;
     margin-bottom: 20px;
 }
 
@@ -40,5 +40,5 @@ p {
 }
 
 .btn:hover {
-    background-color: #0056b3;
+    background-color: #49b36c;
 }
