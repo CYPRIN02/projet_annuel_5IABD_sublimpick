@@ -5,7 +5,7 @@ projet octobre 2024
 
 ## Description
 
-Sublime Pick est une application web développée en **Python** avec **Flask** et déployée sur **Google App Engine**. Elle permet de rechercher des produits, d'afficher leurs détails et d'analyser les avis utilisateurs à l'aide de graphiques générés à partir des données d'avis clients stockées dans **Google Cloud Storage**. 
+Sublime Pick est une application web développée en **Python** avec **Flask** et déployée sur **GCP**. Elle permet de rechercher des produits, d'afficher leurs détails et d'analyser les avis utilisateurs à l'aide de graphiques générés à partir des données d'avis clients stockées dans **Google Cloud Storage**. 
 
 L'application charge une fois un fichier de données JSON contenant les avis produits et utilise cette base pour fournir des résultats de recherche rapide et des visualisations sous forme de graphiques.
 
