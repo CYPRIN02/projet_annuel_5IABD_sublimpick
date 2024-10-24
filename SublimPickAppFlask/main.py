@@ -1,19 +1,18 @@
 import os
 import sys
 
-# Ajout du chemin pour 'backend'
+
 backend_path = os.path.join(os.path.dirname(__file__), 'backend')
 print(f"Ajout du chemin backend au PYTHONPATH: {backend_path}")
 sys.path.append(backend_path)
 
-# Ajout du chemin pour 'frontend'
+
 frontend_path = os.path.join(os.path.dirname(__file__), 'frontend')
 print(f"Ajout du chemin frontend au PYTHONPATH: {frontend_path}")
 sys.path.append(frontend_path)
 
-# Importation de l'application Flask depuis 'backend/app.py'
 try:
-    from backend.app import app  # Importer l'application Flask
+    from backend.app import app  
     print("Importation de 'backend.app' réussie")
 
 except ImportError as e:

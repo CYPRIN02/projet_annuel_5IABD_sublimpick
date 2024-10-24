@@ -57,18 +57,15 @@ def load_product_data():
         storage_path = os.getenv('STORAGE_PATH', '10/reviews/merged_product_reviews.json')
         destination_file = os.path.join(tempfile.gettempdir(), 'merged_product_reviews.json')
         try:
-            # Télécharger le fichier depuis le bucket
             download_blob(bucket_name, storage_path, destination_file)
         except Exception as e:
             print(f"Erreur lors du téléchargement des données produits: {e}")
             return None
-        # Nettoyer le fichier JSON pour remplacer les NaN par null
         try:
             clean_json_file(destination_file)
         except Exception as e:
             print(f"Erreur lors du nettoyage du fichier JSON: {e}")
             return None
-        # Charger et traiter les données JSON en streaming avec ijson
         try:
             product_data = []
             with open(destination_file, 'r', encoding='utf-8') as file:
@@ -79,7 +76,6 @@ def load_product_data():
         except Exception as e:
             print(f"Erreur lors du chargement des données JSON avec ijson: {e}")
             raise
-# Charger les données au démarrage de l'application
 load_product_data()
 @app.route('/')
 def index():
@@ -112,8 +108,6 @@ def product_details(product_url):
     plot_url3 = create_review_trend_graph(product['reviews'], interval)
     plot_url4 = create_keyword_graph(product['reviews'])
     return render_template('product_details.html', product=product, plot_url=plot_url, plot_url2=plot_url2, plot_url3=plot_url3, plot_url4=plot_url4)
-# Lancer l'application Flask
 if __name__ == "__main__":
-    # Charger les données au démarrage
     load_product_data()
     app.run(debug=True)

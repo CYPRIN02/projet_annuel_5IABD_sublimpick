@@ -1,7 +1,6 @@
-runtime: python311  # Utilisez la version de Python que vous avez installée
+runtime: python311 
 env: standard
 instance_class: F4_1G
-# instance_class: F4_1G  # Utilisez F4_1G pour plus de mémoire
 automatic_scaling:
   target_cpu_utilization: 0.65
   target_throughput_utilization: 0.75
@@ -9,14 +8,11 @@ automatic_scaling:
   max_idle_instances: automatic
   min_pending_latency: automatic
   max_pending_latency: automatic
-# Commande de démarrage pour Google App Engine
 entrypoint: gunicorn -b :$PORT -w 2 main:app # Entry point de l'application (main.py)
 
-# accès aux APIs et services nécessaires
 env_variables:
   GOOGLE_CLOUD_PROJECT: "sublimepick1"  # ID  projet
-  # BUCKET_NAME: "sublime_bucket_2024"    # Nom  Cloud Storage bucket
-  # STORAGE_PATH: "data-test-api-application"  # Répertoire dans bucket
+  
   BUCKET_NAME: "sublime_bucket_bis"
   STORAGE_PATH: "10/reviews/merged_product_reviews.json"
   PYTHONPATH: .:backend:backend/helpers
