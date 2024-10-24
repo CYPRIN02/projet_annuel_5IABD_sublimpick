@@ -1,7 +1,16 @@
 runtime: python311  # Utilisez la version de Python que vous avez installée
-
+env: standard
+instance_class: F4_1G
+# instance_class: F4_1G  # Utilisez F4_1G pour plus de mémoire
+automatic_scaling:
+  target_cpu_utilization: 0.65
+  target_throughput_utilization: 0.75
+  min_idle_instances: automatic
+  max_idle_instances: automatic
+  min_pending_latency: automatic
+  max_pending_latency: automatic
 # Commande de démarrage pour Google App Engine
-entrypoint: gunicorn -b :$PORT -w 1 main:app  # Entry point de l'application (main.py)
+entrypoint: gunicorn -b :$PORT -w 2 main:app # Entry point de l'application (main.py)
 
 # accès aux APIs et services nécessaires
 env_variables:
@@ -9,7 +18,7 @@ env_variables:
   # BUCKET_NAME: "sublime_bucket_2024"    # Nom  Cloud Storage bucket
   # STORAGE_PATH: "data-test-api-application"  # Répertoire dans bucket
   BUCKET_NAME: "sublime_bucket_bis"
-  STORAGE_PATH: "10/reviews"
+  STORAGE_PATH: "10/reviews/merged_product_reviews.json"
   PYTHONPATH: .:backend:backend/helpers
 
 service_account: sublimepick1@appspot.gserviceaccount.com
@@ -23,9 +32,3 @@ handlers:
 
 readiness_check:
   app_start_timeout_sec: 1800
-
-# automatic_scaling:
-#   min_idle_instances: 1
-#   max_idle_instances: 2
-#   min_pending_latency: 30s  # Augmente le temps de démarrage autorisé
-#   max_pending_latency: 60s
